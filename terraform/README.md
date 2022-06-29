@@ -1,3 +1,12 @@
+## Table des matières
+
+- [Description](#description)
+- [Configuration](#configuration)
+  - [Credentials](#credentials)
+  - [Initialisation de Terraform](#initialisation-de-terraform)
+- [Exécution](#exécution)
+
+## Description
 Cette infrastructure AWS est composée de :
 
 - 2 VPC avec chacun une table de routage configurée
@@ -6,6 +15,9 @@ Cette infrastructure AWS est composée de :
 - 1 Security group
 
 
+## Configuration
+
+### Credentials
 Terraform utilise les credentials de votre configuration AWS CLI.
 
 Pour ajouter des credentials, utilisez la commande : "aws configure".
@@ -17,9 +29,17 @@ Pour cela, votre fichier .aws/credentials doit ressembler à cet exemple :
 aws_access_key_id = YOUR_ACCESS_KEY_ID
 aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
 
+### Initialisation de Terraform
+Une fois les credentials configurés, vous pouvez initialiser Terraform :
 
+```hcl
+terraform init
+```
+
+## Exécution
 Pour exécuter les fichiers .tf (si Terraform est déjà installé et dans le PATH) :
 
-terraform init
+```hcl
 terraform plan
 terraform apply
+```
