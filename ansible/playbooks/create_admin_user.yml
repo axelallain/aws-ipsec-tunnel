@@ -3,7 +3,30 @@
 - hosts: fortigates
   collections:
     - fortinet.fortios
+  connection: httpapi
+  vars:
+    vdom: "root"
+    access_token: "YOUR_ACCESS_TOKEN"
+    accprofile: "YOUR_ACCESS_PROFILE" # Default is "super_admin"
+    email_to: "YOUR_EMAIL" # The email assigned to this account.
+    fortitoken: "YOUR_FORTITOKEN" # The administrator's FortiToken serial number.
+    ansible_httpapi_use_ssl: yes
+    ansible_httpapi_validate_certs: no
+    ansible_httpapi_port: 443
   tasks:
+  - name: Create admin user.
+    fortios_system_admin:
+      vdom: "{{ vdom }}"
+      state: "present"
+      access_token: "{{ access_token }}"
+      system_admin:
+        accprofile: "{{ accprofile }}"
+        accprofile_override: "enable"
+        allow_remove_admin_session: "enable"
+        email_to: "{{ email_to }}"
+        force_password_change: "enable"
+        fortitoken: "{{ fortitoken }}"
+        guest_auth: "disable"
 
-  - name: Configure admin users.
+  - name: Configure admin user.
     fortios_system_admin:
