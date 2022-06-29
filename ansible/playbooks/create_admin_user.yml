@@ -1,0 +1,9 @@
+---
+
+- hosts: fortigates
+  collections:
+    - fortinet.fortios
+  tasks:
+
+  - name: Configure admin users.
+    fortios_system_admin:
