@@ -20,14 +20,21 @@ Cette infrastructure AWS est composée de :
 ### Credentials
 Terraform utilise les credentials de votre configuration AWS CLI.
 
-Pour ajouter des credentials, utilisez la commande : "aws configure".
+Pour ajouter des credentials, utilisez la commande :
+
+```sh
+aws configure
+```
 
 Il ne reste plus qu'à ajouter le profil "terraform" que Terraform ira chercher.
-Pour cela, votre fichier .aws/credentials doit ressembler à cet exemple :
 
+Pour cela, votre fichier **.aws/credentials** doit ressembler à cet exemple :
+
+```txt
 [terraform]
 aws_access_key_id = YOUR_ACCESS_KEY_ID
 aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
+```
 
 ### Initialisation de Terraform
 Une fois les credentials configurés, vous pouvez initialiser Terraform :
