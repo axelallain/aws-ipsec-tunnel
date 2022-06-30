@@ -10,6 +10,8 @@
     accprofile: "YOUR_ACCESS_PROFILE" # Default is "super_admin"
     email_to: "YOUR_EMAIL" # The email assigned to this account.
     fortitoken: "YOUR_FORTITOKEN" # The administrator's FortiToken serial number.
+    name: "YOUR_NAME"
+    password: "YOUR_PASSWORD"
     ansible_httpapi_use_ssl: yes
     ansible_httpapi_validate_certs: no
     ansible_httpapi_port: 443
@@ -27,6 +29,14 @@
         force_password_change: "enable"
         fortitoken: "{{ fortitoken }}"
         guest_auth: "disable"
+        name: "{{ name }}"
+        password: "{{ password }}"
+        password_expire: "86400" # ???
+        peer_auth: "enable"
+        radius_vdom_override: "enable"
+        remote_auth: "enable"
+        sms_server: "fortiguard"
+        two_factor: "disable"
 
   - name: Configure admin user.
     fortios_system_admin:
