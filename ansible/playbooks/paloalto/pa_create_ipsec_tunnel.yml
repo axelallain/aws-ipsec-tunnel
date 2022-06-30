@@ -1,0 +1,8 @@
+---
+
+- hosts: paloalto
+  collections:
+    - paloaltonetworks.panos
+  connection: local
+  tasks:
+    - name: 
