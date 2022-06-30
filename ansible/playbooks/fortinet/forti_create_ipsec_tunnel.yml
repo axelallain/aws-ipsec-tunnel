@@ -1,0 +1,33 @@
+---
+
+- hosts: fortigates
+  collections:
+    - fortinet.fortios
+  connection: httpapi
+  vars:
+    vdom: "root"
+    access_token: "YOUR_ACCESS_TOKEN"
+    xauth_password: "YOUR_XAUTH_PASSWORD"
+    ansible_httpapi_use_ssl: yes
+    ansible_httpapi_validate_certs: no
+    ansible_httpapi_port: 443
+  tasks:
+  - name: Configure VPN remote gateway.
+    fortios_vpn_ipsec_phase1:
+      vdom: "{{ vdom }}"
+      state: "present"
+      access_token: "{{ access_token }}"
+      vpn_ipsec_phase1:
+        acct_verify: "enable"
+        add_gw_route: "enable"
+        add_route: "disable"
+        assign_ip: "disable"
+        assign_ip_from: "range"
+        authmethod: "psk"
+        authmethod_remote: "psk"
+        authpasswd: "{{ xauth_password }}"
+        authusr: "{{ xauth_user }}"
+        auto_negotiate: "enable"
+        childless_ike: "enable"
+        client_auto_negotiate: "disable"
+        client_keep_alive: "disable"

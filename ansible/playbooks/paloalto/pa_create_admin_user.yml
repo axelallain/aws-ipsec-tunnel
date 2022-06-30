@@ -1,0 +1,17 @@
+---
+
+- hosts: paloalto
+  collections:
+    - paloaltonetworks.panos
+  connection: local
+  vars:
+    admin_username: "YOUR_ADMIN_USERNAME"
+    admin_password: "YOUR_ADMIN_PASSWORD"
+  tasks:
+    - name: Create admin user.
+    panos_administrator:
+      # provider:
+      admin_username: '{{ admin_username }}'
+      admin_password: '{{ admin_password }}'
+      superuser: true
+      commit: false

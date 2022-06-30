@@ -1,8 +1,0 @@
----
-
-- hosts: fortigates
-  collections:
-    - fortinet.fortios
-  tasks:
-
-  - name:
